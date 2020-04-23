@@ -115,8 +115,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 		]
 	]
 }
-$thread 
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="Phone" tags="" position="3015,952" size="100,100">&lt;div class=&quot;message&quot;&gt;[[Catherine]]
+</tw-passagedata><tw-passagedata pid="5" name="Phone" tags="" position="3015,952" size="100,100">&lt;div class=&quot;message&quot;&gt;[[Catherine]]
 	Guess What! Guess What!&lt;/div&gt;
 &lt;div class=&quot;message&quot;&gt;[[Ethan]]
 	Hey :( I&#39;m feeling a little down. Could you cheer me up?&lt;/div&gt;
@@ -542,10 +541,12 @@ $thread
 =| 
 [[No! Ester! Get that out of your head. baby he did not have the right to touch you like that! That&#39;s a sexual assault]]
 
-|==|</tw-passagedata><tw-passagedata pid="40" name="Return to Notifications!" tags="" position="4069.5,2262.5" size="200,200">(if: $Catherine is true)[Catherine ended up spending a lovely girls night at your house and you two ended up being best friends! She aced her writing paper that she had due and she went to her top choice college and worked on herself. Then she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on highschool boys]
+|==|</tw-passagedata><tw-passagedata pid="40" name="Return to Notifications!" tags="" position="4069,2262" size="200,200">{
+(if: $Catherine is true)[Catherine ended up spending a lovely girls night at your house and you two ended up being best friends! She aced her writing paper that she had due and she went to her top choice college and worked on herself. Then she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on highschool boys]
 			
 			
 (if: $Catherine is false)[Catherine chased the boy in her math class. He ended up not liking her so she found a new crush. The cycle continued on. She ended up doing relatively poorly on her exams and papers and almost didn&#39;t pass the year. She is doing alright now and has worked her grades back up and has found a man who supports her passions and pursuits.]
+}
 
 [[Ester]]
 		
@@ -554,7 +555,7 @@ $thread
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well, it&#39;s basically a facebook group where you can post your friends or yourself. And you essentially attach a bunch of pictures and you can say characteristics about yourself like your height, age, what you do, etc. It&#39;s almost like a fancier tinder.&quot;) )
 	(set: $responses to it + (a: &quot;Ahhh I see. That sounds pretty interesting. Have you made a post????? IF SO LET ME SEE&quot;))
-	(set: $ responses to it + (a: &quot;No :/ I could never&quot;))
+	(set: $responses to it + (a: &quot;No :/ I could never&quot;))
 	(display: &quot;Messenger&quot;)
 } 
 
@@ -995,7 +996,7 @@ $thread
 =|
 [[No! That is not right! You guys should be able to express your love in school.]]
 
-|==|</tw-passagedata><tw-passagedata pid="79" name="Wait that sounds so fun. No one ever asks me that." tags="" position="2828.5,432" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="79" name="Wait that sounds so fun. No one ever asks me that." tags="" position="2828,432" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;You have got to be kidding me. That is disgusting. They are sexualizing our relationship. They have no right to do that. Have you ever heard of guys going up to a hetereosexual couple and asking &#39;hey we should all get together&#39;?&quot;) )
@@ -1043,11 +1044,14 @@ $thread
 	(set: $Jess to 4)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="83" name="Ester" tags="" position="3841,2125" size="100,100">(if: $Ester is false)[Ester always looks back on the night you talked to her. She was always hopeful that you could have convinced her and told her what her boyfriend did was wrong. She became doubtful of her thoughts and stayed in her relationship. It became increasingly toxic and he pushed himself on to her many times. She let him again again because that&#39;s what she thought she was supposed to do. By the time she realized it was wrong, it was too late. She felt she was too far in. Too much time was spent in the relationship with him. She could never leave him now.]
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="83" name="Ester" tags="" position="3842,2125" size="100,100">{
+	(if: $Ester is false)[Ester always looks back on the night you talked to her. She was always hopeful that you could have convinced her and told her what her boyfriend did was wrong. She became doubtful of her thoughts and stayed in her relationship. It became increasingly toxic and he pushed himself on to her many times. She let him again again because that&#39;s what she thought she was supposed to do. By the time she realized it was wrong, it was too late. She felt she was too far in. Too much time was spent in the relationship with him. She could never leave him now.]
 
-(if: $Ester is true)[She talked to her boyfriend. He was understanding and he never did anything else to her without explicity asking for her permission. They ended up staying together for quite some time longer. However, when it came to college they called it quits and are now living life at their respective colleges getting great grades and partying hard. Work hard play hard. What can they say?]
+	(if: $Ester is true)[She talked to her boyfriend. He was understanding and he 	never did anything else to her without explicity asking for her 		permission. They ended up staying together for quite some time 		longer. However, when it came to college they called it quits and are now living life at their respective colleges getting great grades and partying hard. Work hard play hard. What can they say?]
+}
 
-[[Ethan!]]</tw-passagedata><tw-passagedata pid="84" name="Ethan!" tags="" position="3841,2275" size="100,100">(if: $Ethan is 1)[Ethan did not end up finding anyone to marry or love after you talked to him. Sadly, that night he needed a serious confidence booster that you were not able to give to him. As years passed, he became more and more insecure, and he felt less and less confident in himself as he continuously saw images of other men that he felt lived the dream he could never achieve.]
+[[Ethan!]]</tw-passagedata><tw-passagedata pid="84" name="Ethan!" tags="" position="3841,2275" size="100,100">{
+(if: $Ethan is 1)[Ethan did not end up finding anyone to marry or love after you talked to him. Sadly, that night he needed a serious confidence booster that you were not able to give to him. As years passed, he became more and more insecure, and he felt less and less confident in himself as he continuously saw images of other men that he felt lived the dream he could never achieve.]
 
 (if: $Ethan is 2)[Ethan did not end up finding anyone to marry or love after you talked to him. Sadly, that night he needed a serious confidence booster that you were not able to give to him. As years passed, he became more and more insecure, and he felt less and less confident in himself as he continuously saw images of other men that he felt lived the dream he could never achieve.]
 
@@ -1056,15 +1060,17 @@ $thread
 (if: $Ethan is 4)[You and Ethan went out to party the next weekend and had a great time. Although you were unable to get him a beautiful girl to talk to even though you definitely tried, Ethan went home that night overjoyed and forgot about all his worries about subtle asian dating. Although he saw some of their posts as he scrolled through facebook, it stopped fazing him that he didn&#39;t look much like the guys on the page. He worries more about what he had to show on this inside and worked on himself. He is now highly successful and owns his own small business.]
 
 (if: $Ethan is 5)[You and Ethan went out the next weekend and made a beautiful post with all the best angles. You cherry picked all his best qualities and made him look the best he could ever look. You guys were both very proud of what you got done and submitted it the facebook group. However, after it was posted, it did not get much attention. Only a few 20 people liked it compared to the 1000s the men that Ethan had described got. Ethan became very discouraged and this took a large piece of his self esteem that he was never able to gain back. His post proved to him that he was right at first. He could never beat out these 6 foot tall and 8 pack ab guys.]
+}
 
 [[Jess!]]
-</tw-passagedata><tw-passagedata pid="85" name="Jess!" tags="" position="3841,2425" size="100,100">(if: $Jess is 1)[Jess never talked to you again.]
+</tw-passagedata><tw-passagedata pid="85" name="Jess!" tags="" position="3841,2425" size="100,100">{(if: $Jess is 1)[Jess never talked to you again.]
 
 (if: $Jess is 2)[Jess never talked to you again. She saw you at school, but was so upset that her best friend viewed her relationship like her bullies at school that she never wanted to talk to you again. You don&#39;t know what happened to her. Jess and Emily seemed happy throughout their relationship in highschool. You watched from a far of course. Who knows what kind of demons formed from all the things people said about them.]
 
 (if: $Jess is 3)[Jess was right. The next day at school they had a fake argument in front of the entire school and broke up. You have to give them credit as it was beautifully acted. However, as weeks went on you saw their relationship start to die. Jess resented Emily for making them go private. Jess wanted to show affection and oftentimes tried to only to be pushed away by Emily. They had to pretend to hate eachother and because they tried to avoid being seeing, they also did not go on dates on anymore. Their love for eachother dwindled and started to die off just a few weeks after their fake breakup]
 
-(if: $Jess is 4)[You went to the principal the next day with Jess and Emily to report all the incidents that happened throughout the day. The principal told you that there was not much they could do to help. They could only try their best to mitigate any bullying, but the principal felt it would be impossible to stop all of it. The principal was right. Although they could mitigate a few of the harsh words and comments, they could not get all of them or all the attention away. Not only this, but after reporting it to the principal, there was even more attention payed towards Emily and Jess. They even started getting hate messages because they reported it to the principal. You felt sorry that you had pushed them in that direction. You watched as the crushing comments and hate pushed the two of them apart until Emily and Jess split, and all the comments stopped.]</tw-passagedata></tw-storydata>
+(if: $Jess is 4)[You went to the principal the next day with Jess and Emily to report all the incidents that happened throughout the day. The principal told you that there was not much they could do to help. They could only try their best to mitigate any bullying, but the principal felt it would be impossible to stop all of it. The principal was right. Although they could mitigate a few of the harsh words and comments, they could not get all of them or all the attention away. Not only this, but after reporting it to the principal, there was even more attention payed towards Emily and Jess. They even started getting hate messages because they reported it to the principal. You felt sorry that you had pushed them in that direction. You watched as the crushing comments and hate pushed the two of them apart until Emily and Jess split, and all the comments stopped.]
+}</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
