@@ -18,6 +18,9 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
+  overflow: auto; 
+  padding: 5%;
+ }
 }
 
 .messages {
@@ -59,33 +62,41 @@
 .bubble-left:after {
   content: "";
   position: absolute;
-  z-index: 1;
-  bottom: 0;
-  right: -10px;
-  width: 10px;
-  height: 20px;
-  background: white;
-  border-bottom-left-radius: 10px;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: gray;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-left: -20px;
 }
 
-.bubble-right: after {
-   content: "";
+.bubble-right:after {
+  content: "";
   position: absolute;
-  z-index: 1;
-  bottom: 0;
-  right: -10px;
-  width: 10px;
-  height: 20px;
-  background: white;
-  border-bottom-left-radius: 10px;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-left-color: #00aabb;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -10px;
+  margin-right: -20px;
 }
-  </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="3005,703" size="100,100">Alrighty...
-[[Ding, Ding, Ding -&gt;Phone]]
-Oh, that&#39;s a lot of notifications I guess I should check my Phone
+  </style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Untitled Passage" tags="" position="2805,1623" size="100,100">Welcome to:
 
-(set: $characters to 0)</tw-passagedata><tw-passagedata pid="2" name="Catherine" tags="" position="2832,1121" size="100,100">{
+(css: &quot;font-size: 300%;&quot;)[Text a Friend]
+
+{(live: 3s)[Alrighty... I just finished my homework. Let&#39;s take a little break.
+[[Check Your Phone]]]}
+</tw-passagedata><tw-passagedata pid="2" name="Catherine" tags="" position="1636,1534" size="100,100">{
 	&lt;! -- Save our response --&gt; 
-	(set: $responses to (a: &quot;Guess What! Guess What!&quot;) )
+	(set: $responses to (a: &quot;Guess what! Guess what!&quot;) )
 	&lt;! -- Save their response --&gt; 
 	(display: &quot;Messenger&quot;)
 	(set: $characters to it + 1)
@@ -93,13 +104,13 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 
 |=
-[[what...i&#39;m not playing games here]]
+[[what?...I&#39;m not playing games here]]
 
 |= 
-[[You got a puppy!]]
-|==|</tw-passagedata><tw-passagedata pid="3" name="Startup" tags="startup" position="92,692" size="100,100">{
+[[Oh! I know! You got a puppy!]]
+|==|</tw-passagedata><tw-passagedata pid="3" name="Startup" tags="startup" position="98,693" size="100,100">{
 	(set: $right to true)
-}</tw-passagedata><tw-passagedata pid="4" name="Messenger" tags="" position="97,494" size="100,100">&lt;div class=&quot;container&quot;&gt; 
+}</tw-passagedata><tw-passagedata pid="4" name="Messenger" tags="" position="97,492" size="100,100">&lt;div class=&quot;container&quot;&gt; 
 {
 	(for: each _response, ...$responses)[
 		(if: $right is true)[
@@ -115,19 +126,21 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 		]
 	]
 }
-</tw-passagedata><tw-passagedata pid="5" name="Phone" tags="" position="3015,952" size="100,100">&lt;div class=&quot;message&quot;&gt;[[Catherine]]
-	Guess What! Guess What!&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="5" name="Phone" tags="" position="2847,1988" size="100,100">(alert: &quot;Hmmm. Who should I message back?&quot;)
+
+&lt;div class=&quot;message&quot;&gt;[[Catherine]]
+	Guess what! Guess what!&lt;/div&gt;
 &lt;div class=&quot;message&quot;&gt;[[Ethan]]
 	Hey :( I&#39;m feeling a little down. Could you cheer me up?&lt;/div&gt;
 &lt;div class=&quot;message&quot;&gt;[[Jess]]
 	Ugh! Can I just rant to you for a second?&lt;/div&gt;
 
-(if: $characters is 3)[[Esther]]</tw-passagedata><tw-passagedata pid="6" name="Ethan" tags="" position="2822,689" size="100,100">{
-	&lt;! -- Save our response --&gt; 
-	(set: $responses to (a: &quot;Hey :( I&#39;m feeling a little down. Could you cheer me up?&quot;) )
-	&lt;! -- Save their response --&gt; 
-	(set: $responses to (a: &quot;Oh no :(( what&#39;s up dude?&quot;))
-	(set: $responses to (a: &quot;Idk. Do you know that facebook group &#39;subtle asian dating&#39;&quot;))
+(if: $characters is 3)[[Esther]]
+
+(set: $right to false)</tw-passagedata><tw-passagedata pid="6" name="Ethan" tags="" position="1750,677" size="100,100">{
+	(set: $responses to (a:&quot;Hey :( I&#39;m feeling a little down. Could you cheer me up?&quot;))
+	(set: $responses to it + (a: &quot;Oh no :(( what&#39;s up dude?&quot;))
+	(set: $responses to it + (a: &quot;Idk. Do you know that facebook group &#39;subtle asian dating&#39;?&quot;))
 	(display: &quot;Messenger&quot;)
 	(set: $characters to it + 1)
 }
@@ -138,7 +151,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 |= 
 [[Ya? I&#39;ve heard of it. Wait! Have you made a post?]]
-|==|</tw-passagedata><tw-passagedata pid="7" name="what...i&#39;m not playing games here" tags="" position="2636,1137" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="7" name="what?...I&#39;m not playing games here" tags="" position="1490,1635" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I met the CUTEST boy&quot;) )
@@ -148,8 +161,8 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 |=
 [[Tell me ALL about him! I&#39;m so excited]]
 =|
-[[Really?... another one...]]
-|==|</tw-passagedata><tw-passagedata pid="8" name="You got a puppy!" tags="" position="2996,1219" size="100,100">{ 
+[[Really? another one? Who is it now?]]
+|==|</tw-passagedata><tw-passagedata pid="8" name="Oh! I know! You got a puppy!" tags="" position="1857,1663" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I met the CUTEST boy&quot;) )
@@ -160,10 +173,10 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 =|
 [[Tell me ALL about him! I&#39;m so excited]] 
-|==|</tw-passagedata><tw-passagedata pid="9" name="Tell me ALL about him! I&#39;m so excited" tags="" position="2898,1381" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="9" name="Tell me ALL about him! I&#39;m so excited" tags="" position="1609,1769" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Soooo... he&#39;s in my math class. And his name is Chris. I didn&#39;t even pay attention in class. I was just staring at him the entire time. ugh... so dreamy&quot;) )
+	(set: $responses to it + (a: &quot;Soooo... he&#39;s in my math class. His name is Chris. I didn&#39;t even pay attention in class. I was just staring at him the entire time. ugh... so dreamy&quot;) )
 	(display: &quot;Messenger&quot;)
 } 
 
@@ -172,9 +185,9 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 
 =|
-[[Send me his @ I wanna see, also tell me more!!]]
+[[Send me his @ I wanna see his cuteness! Also, tell me more!!]]
 
-|==|</tw-passagedata><tw-passagedata pid="10" name="I think a puppy&#39;s more exciting..." tags="" position="2750,1262" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="10" name="I think a puppy&#39;s more exciting..." tags="" position="2007,1794" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Stop! I&#39;m serious! His name is Chris... and he&#39;s in my math class. He&#39;s really cute. Did I already say that?
@@ -188,9 +201,9 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[Shouldn&#39;t you be paying attention in math class... instead of staring at boys...]]
 
 =|
-[[Come over tonight!! We&#39;ll do face masks so you can look super cute to impress him]]
+[[Send me his @ I wanna see his cuteness! Also, tell me more!!]]
 
-|==|</tw-passagedata><tw-passagedata pid="11" name="Send me his @ I wanna see, also tell me more!!" tags="" position="3181,1401" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="11" name="Send me his @ I wanna see his cuteness! Also, tell me more!!" tags="" position="1504,1897" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I don&#39;t know what it is. Help me find it!&quot;) )
@@ -198,119 +211,84 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 } 
 
 |= 
-[[Wait. Don&#39;t you have a big paper coming up? Shouldn&#39;t you be working on that...]]
+[[Wait. Don&#39;t you have a big paper coming up? Shouldn&#39;t you be working on that instead of trying to find some guy you saw in your math class today.]]
 
 =|
 
-[[Yes, yes of course! Come over tonight and we can for his @ together. And do face masks so you can impress him!]]</tw-passagedata><tw-passagedata pid="12" name="Shouldn&#39;t you be paying attention in math class... instead of staring at boys..." tags="" position="2640,1423" size="100,100">{ 
-	&lt;!-- Save our response from passage name --&gt;
-	(set: $responses to it + (a: (passage:)&#39;s name) )
+[[Yes, yes of course! I have a big paper due, but finding your dream boyfriend is DEFINITELY more important]]</tw-passagedata><tw-passagedata pid="12" name="Shouldn&#39;t you be paying attention in math class... instead of staring at boys..." tags="" position="1763,1899" size="100,100">{ 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Get your priorities straight! Boys come before grades. That&#39;s the most obvious rule.&quot;) )
 	(display: &quot;Messenger&quot;)
 } 
-
 |= 
 [[Why do you think boys come first?]]
-
 =| 
 [[Oh you&#39;re right! Okay okay tell me more about the boy]]
-
-|==|</tw-passagedata><tw-passagedata pid="13" name="Come over tonight!! We&#39;ll do face masks so you can look super cute to impress him" tags="" position="3018,1500" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="13" name="Really? another one? Who is it now?" tags="" position="1263,1684" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Yes!!! When Should I come over?&quot;) )
-	(display: &quot;Messenger&quot;)
-} 
-
-|= 
-[[Does eight sound good?]]
-
-=| 
-[[What about right now!]]
-
-|==|</tw-passagedata><tw-passagedata pid="14" name="Yes, yes of course! Come over tonight and we can for his @ together. And do face masks so you can impress him!" tags="" position="3294,1686" size="100,100">{ 
-	&lt;!-- Save our response from passage name --&gt;
-	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Yes!!! When Should I come over?&quot;) )
-	(display: &quot;Messenger&quot;)
-} 
-
-|= 
-[[Does eight sound good?]]
-
-=| 
-[[What about right now!]]
-
-|==|</tw-passagedata><tw-passagedata pid="15" name="Really?... another one..." tags="" position="2560,1294" size="100,100">{ 
-	&lt;!-- Save our response from passage name --&gt;
-	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Stop! I&#39;m serious! His name is Chris... and he&#39;s in my math class. He&#39;s really cute. Did I already say that?
+	(set: $responses to it + (a: &quot;Stop! I&#39;m serious! His name is Chris. and he&#39;s in my math class. He&#39;s really cute. Did I already say that?
 	Oh! And he&#39;s super smart isn&#39;t that such a plus. And dreamyy. I could look at him all day if I wanted to&quot;) )
+	(set: $responses to it + (a: &quot;Stop. Let me guess. He&#39;s super dreamyyy and he already has you swooning over him. Am I right?&quot;))
+	(set: $responses to it + (a: &quot;Yes! Omg. How did you know??? That&#39;s besides the point. 
+	Anyways. His name is Chris, and like you already mentioned, he is soooo dreamy. I think he&#39;s a new student?&quot;))
 	(display: &quot;Messenger&quot;)
 } 
-
-
 |= 
-
-[[Shouldn&#39;t you be paying attention in math class... instead of staring at boys...]]
-
+[[You mean Chris Evans? He has been going to our school for years already.]]
 =|
-[[Come over tonight!! We&#39;ll do face masks so you can look super cute to impress him]]
+[[A new student?? Tell me more! Did you get to talk to him?]]
 
-|==|</tw-passagedata><tw-passagedata pid="16" name="Does eight sound good?" tags="" position="2853,1662" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="14" name="Does eight sound good?" tags="" position="1740,2772" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Okay okay! I&#39;m going to get ready to head over.&quot;) )
 	(display: &quot;Messenger&quot;)
-	(set: $Catherine to true)
+	(set: $Catherine to 3)
 } 
 
 [[Return to Notifications -&gt;Phone]]
-</tw-passagedata><tw-passagedata pid="17" name="What about right now!" tags="" position="3078,1787" size="200,100">{ 
+</tw-passagedata><tw-passagedata pid="15" name="What about right now!" tags="" position="1125,2758" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I am on my way!! I have work to do but it&#39;s okay!&quot;) )
 	(display: &quot;Messenger&quot;)
-	(set: $Catherine to true)
+	(set: $Catherine to 1)
 } 
 [[Return to Notifications -&gt;Phone]]
 
-</tw-passagedata><tw-passagedata pid="18" name="Why do you think boys come first?" tags="" position="2597,1611" size="100,100">{ 
+</tw-passagedata><tw-passagedata pid="16" name="Why do you think boys come first?" tags="" position="1801,2079" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I mean a boy is gonna make me happy? Also isn&#39;t it nice to get some attention sometimes?&quot;) )
 	(display: &quot;Messenger&quot;)
 } 
-
 |= 
-[[Yea, it can be nice. But you should learn how to be happy first. There is always more time to find a boy to love or to love you.]]
-
+[[Yea, it can be nice, but you should learn how to be happy first. There is always more time to find a boy to love or to love you.]]
 =| 
 [[Oh you&#39;re right! Okay okay tell me more about the boy]]
-
-|==|</tw-passagedata><tw-passagedata pid="19" name="Oh you&#39;re right! Okay okay tell me more about the boy" tags="" position="2788,1542" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="17" name="Oh you&#39;re right! Okay okay tell me more about the boy" tags="" position="2000,2052" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Wait, let me come over! I&#39;ll explain more then!&quot;) )
-	(set: $responses to it + (a: &quot;Okay. Yes, I am excited I&#39;ll set up some snacks&quot;) )
+	(set: $responses to it + (a: &quot;I don&#39;t know that much about him, but i know I want him to be my boyfriend.&quot;) )
 	(display: &quot;Messenger&quot;)
-	
-	(set: $Catherine to true)
 } 
 
-[[Return to Notifications -&gt;Phone]]
-</tw-passagedata><tw-passagedata pid="20" name="Yea, it can be nice. But you should learn how to be happy first. There is always more time to find a boy to love or to love you." tags="" position="2703,1790" size="200,100">{ 
+|=
+[[Let&#39;s call this &quot;MISSION: Chris=Boyfriend&quot; Do you get it? The equal sign is like the math class? yea?]]
+=|
+[[Wait. You only saw the man, and you already want him to be your boyfriend?]]
+</tw-passagedata><tw-passagedata pid="18" name="Yea, it can be nice, but you should learn how to be happy first. There is always more time to find a boy to love or to love you." tags="" position="2047,2798" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I mean I guess you&#39;re right... but I dont know how to stop obsessing over guys&quot;) )
 	(set: $responses to it + (a: &quot;Why don&#39;t you come over and we can have a girl&#39;s night. We can do some self care and focus on ourselves. No guys, just us &lt;3&quot;) )
 	(set: $responses to it + (a: &quot;Okay, okay. Let me grab my homework and I&#39;ll be right over! Im exciteedddd&quot;) )
 	(display: &quot;Messenger&quot;)
-	(set: $Catherine to false)
+	(set: $Catherine to 0)
 } 
 [[Return to Notifications -&gt;Phone]]
 
-</tw-passagedata><tw-passagedata pid="21" name="Esther" tags="" position="3220,694" size="100,100">{
+</tw-passagedata><tw-passagedata pid="19" name="Esther" tags="" position="3460,1214" size="100,100">{
 	(set: $right to false)
 	&lt;! -- Save our response --&gt; 
 	(set: $responses to (a: &quot;Hey, how&#39;d your date night with Max gooooo. Tell me all the details!&quot;) )
@@ -325,20 +303,20 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 |= 
 [[Why do you sound so nervous?]]
-|==|</tw-passagedata><tw-passagedata pid="22" name="Wait. Don&#39;t you have a big paper coming up? Shouldn&#39;t you be working on that..." tags="" position="3174,1581" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="20" name="Wait. Don&#39;t you have a big paper coming up? Shouldn&#39;t you be working on that instead of trying to find some guy you saw in your math class today." tags="" position="1400,2048" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;Get your priorities straight! Boys come before grades. That&#39;s the most obvious rule.&quot;) )
+	(set: $responses to it + (a: &quot;Get your priorities straight! Boys come before grades. That&#39;s the most obvious rule. Duuuh. What kind of girl are you?&quot;) )
 	(display: &quot;Messenger&quot;)
 } 
 
 |= 
-[[Why do you think boys come first?]]
+[[An independent woman. I don&#39;t need no man. Why do you think boys come first?]]
 
 =| 
-[[Oh you&#39;re right! Okay okay tell me more about the boy]]
+[[Oh my goodness, you&#39;re right! Okay, okay tell me more about the boy.]]
 
-|==|</tw-passagedata><tw-passagedata pid="23" name="OOoOOOoooo tell me ALL the details! What happenned?" tags="" position="3362,784" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="21" name="OOoOOOoooo tell me ALL the details! What happenned?" tags="" position="3605,1410" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well. We kind of sat around... and then like we started kissing you know.&quot;) )
@@ -351,7 +329,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Why do you sound so nervous?]]
 
-|==|</tw-passagedata><tw-passagedata pid="24" name="Why do you sound so nervous?" tags="" position="3552,711" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="22" name="Why do you sound so nervous?" tags="" position="3792,1231" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;So, we were kissing right... and he started to touch me all over&quot;) )
@@ -364,7 +342,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Did you want him to?]]
 
-|==|</tw-passagedata><tw-passagedata pid="25" name="KEEP GOIngGGG why are you so slowww spilllll" tags="" position="3254,1000" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="23" name="KEEP GOIngGGG why are you so slowww spilllll" tags="" position="3494,1520" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;haha sorry. um so he we kept kissing and then he started touching me all over&quot;) )
@@ -377,7 +355,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Did you enjoy it?]]
 
-|==|</tw-passagedata><tw-passagedata pid="26" name="OMG! Wait this is so exciting!!!" tags="" position="3499,875" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="24" name="OMG! Wait this is so exciting!!!" tags="" position="3739,1395" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;haha yea. He seemed pretty happy. He kept saying how much he enjoyed it and stuff. lol &quot;) )
@@ -390,7 +368,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Did you enjoy it?]]
 
-|==|</tw-passagedata><tw-passagedata pid="27" name="Did you want him to?" tags="" position="3736,847" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="25" name="Did you want him to?" tags="" position="3976,1367" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;not really... i mean it felt okay? but he kept saying how happy it made him I just let him. I mean he is my boyfriend&quot;) )
@@ -403,7 +381,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[just becauses he&#39;s your boyfriend doesn&#39;t obligate you to give him whatever he wants...]]
 
-|==|</tw-passagedata><tw-passagedata pid="28" name="ya, you&#39;re right. You dont really want to upset him. I&#39;d hate it if you guys broke." tags="" position="3653,1184" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="26" name="ya, you&#39;re right. You dont really want to upset him. I&#39;d hate it if you guys broke." tags="" position="3893,1704" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;i guess we are a pretty big deal around school. There&#39;d probably be a lot fo rumors if we broke up &quot;) )
@@ -416,7 +394,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[You don&#39;t have to stay with him just because you guys have been together for so long]]
 
-|==|</tw-passagedata><tw-passagedata pid="29" name="just becauses he&#39;s your boyfriend doesn&#39;t obligate you to give him whatever he wants..." tags="" position="3883,1007" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="27" name="just becauses he&#39;s your boyfriend doesn&#39;t obligate you to give him whatever he wants..." tags="" position="4411,1519" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;but it made him so happy. Isn&#39;t that my job to make him happy &quot;) )
@@ -429,7 +407,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[No! Ester! Get that out of your head. baby he did not have the right to touch you like that! That&#39;s a sexual assault]]
 
-|==|</tw-passagedata><tw-passagedata pid="30" name="Did you guys do the deed?!!! That&#39;s so amazingggggg!!! I wanna know more tell me more" tags="" position="3328,1150" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="28" name="Did you guys do the deed?!!! That&#39;s so amazingggggg!!! I wanna know more tell me more" tags="" position="3568,1670" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;ya. he kind of just kept going and we had sex? &quot;) )
@@ -442,7 +420,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Why aren&#39;t you excited about it?]]
 
-|==|</tw-passagedata><tw-passagedata pid="31" name="Did you enjoy it?" tags="" position="3481,1097" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="29" name="Did you enjoy it?" tags="" position="3721,1617" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;not really... i mean it felt okay? but he kept saying how happy it made him I just let him. I mean he is my boyfriend&quot;) )
@@ -455,7 +433,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[just becauses he&#39;s your boyfriend doesn&#39;t obligate you to give him whatever he wants...]]
 
-|==|</tw-passagedata><tw-passagedata pid="32" name="Eeeeekk!! Tell me what its like! Teach meeee" tags="" position="3275,1288" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="30" name="Eeeeekk!! Tell me what its like! Teach meeee" tags="" position="3515,1808" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;haha yea. maybe I&#39;ll tell you later. I have dinner now. &quot;) )
@@ -464,7 +442,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ester to false)
 } 
 
-[[Return to Notifications!]]</tw-passagedata><tw-passagedata pid="33" name="Why aren&#39;t you excited about it?" tags="" position="3495,1243" size="100,100">{ 
+[[Return to Notifications!]]</tw-passagedata><tw-passagedata pid="31" name="Why aren&#39;t you excited about it?" tags="" position="3735,1763" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;i dont know lol. I guess I wasn&#39;t that into it? &quot;) )
@@ -477,7 +455,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[Did you not want him to do that to you?]]
 
-|==|</tw-passagedata><tw-passagedata pid="34" name="So what happened?" tags="" position="3578,1568" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="32" name="So what happened?" tags="" position="3818,2005" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;i dont really want to talk about it rn. He&#39;s actually calling me. I&#39;ll uh talk to you later &quot;) )
@@ -486,7 +464,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ester to false)
 } 
 
-[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="35" name="You don&#39;t have to stay with him just because you guys have been together for so long" tags="" position="3571,1357" size="200,100">{ 
+[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="33" name="You don&#39;t have to stay with him just because you guys have been together for so long" tags="" position="3811,1877" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;idk i just kind of feel violated I guess&quot;) )
@@ -498,7 +476,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 } 
 
 [[Return to Notifications!]]
-</tw-passagedata><tw-passagedata pid="36" name="Ya... that&#39;s true. It&#39;s good you let him then. You dont want to make him mad" tags="" position="3970,1310" size="200,100">{ 
+</tw-passagedata><tw-passagedata pid="34" name="Ya... that&#39;s true. It&#39;s good you let him then. You dont want to make him mad" tags="" position="6321,1592" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;i dont really want to talk about it rn. He&#39;s actually calling me. I&#39;ll uh talk to you later &quot;) )
@@ -507,7 +485,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ester to false)
 } 
 
-[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="37" name="No! Ester! Get that out of your head. baby he did not have the right to touch you like that! That&#39;s a sexual assault" tags="" position="3800,1198" size="200,100">{ 
+[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="35" name="No! Ester! Get that out of your head. baby he did not have the right to touch you like that! That&#39;s a sexual assault" tags="" position="4040,1718" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;hmm... :(&quot;) )
@@ -519,7 +497,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 } 
 
 
-[[Return to Notifications!]]</tw-passagedata><tw-passagedata pid="38" name="GET EXCITeDDDD come onnn this is a big deal" tags="" position="3302,1424" size="200,100">{ 
+[[Return to Notifications!]]</tw-passagedata><tw-passagedata pid="36" name="GET EXCITeDDDD come onnn this is a big deal" tags="" position="3542,2034" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;haha yea. maybe youre right. I should be more excited. I have dinner now. I&#39;ll ttyl &quot;) )
@@ -528,7 +506,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ester to false)
 } 
 
-[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="39" name="Did you not want him to do that to you?" tags="" position="4884,1772" size="100,100">{ 
+[[Return to Notifications!]] </tw-passagedata><tw-passagedata pid="37" name="Did you not want him to do that to you?" tags="" position="4884,1772" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;i mean not really... but it made him so happy I didn&#39;t want to upset him&quot;) )
@@ -541,14 +519,15 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 [[No! Ester! Get that out of your head. baby he did not have the right to touch you like that! That&#39;s a sexual assault]]
 
-|==|</tw-passagedata><tw-passagedata pid="40" name="Return to Notifications!" tags="" position="4069,2262" size="200,200">(if: $Catherine is true)[Catherine ended up spending a lovely girls night at your house and you two ended up being best friends! She aced her writing paper that she had due and she went to her top choice college and worked on herself. Then she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on highschool boys]
-			
-			
-(if: $Catherine is false)[Catherine chased the boy in her math class. He ended up not liking her so she found a new crush. The cycle continued on. She ended up doing relatively poorly on her exams and papers and almost didn&#39;t pass the year. She is doing alright now and has worked her grades back up and has found a man who supports her passions and pursuits.]
+|==|</tw-passagedata><tw-passagedata pid="38" name="Return to Notifications!" tags="" position="4069,2262" size="200,200">{
+(if: $Catherine is 0)[Catherine ended up spending a lovely girls night at your house, and you two ended up becoming best friends! She aced her writing paper that she had due and she went to her top choice college. She worked on herself and always remembered the advice you gave her that no boy could make her happier. Rather, the happiness had to come from within.In college, she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on those highschool boys. She also learned from that night to know her worth, and she realized that she should never settle for just any guy. She should only stay with the man who truly keeps her the happiest.]
+(if: $Catherine is 1)[Catherine chased the boy in her math class. That night she went to your house, and the two of you planned out her entire life with his man. He ended up not liking her. She was devasted and crushed for a few weeks until she found a new crush, and the cycle continued on. She ended up doing relatively poorly on her exams and papers. In fact, she almost did not pass the year. She became so engulfed in finding her someone that she let her other dreams of going to college and law school slip past her.]
+(if: $Catherine is 3)[You and Catherine made the perfect plan to make Chris her boyfriend. It was miraculous, truly. Catherine and Chris became the iconic couple. They were always smiling, holding hands, and just acting cute. You were so happy for her. Until you realized what was going on behind the scenes, Chris was being abusive. You watched Catherine slip away from all her friends. First, went her guy friends. Then, went her girl friends, and last, came you, her best friend. You didn&#39;t know what to do. You knew that Catherine would never give Chris up no matter how badly he was treating her. I mean he was the man of her dreams. Right?]
+}
 
 [[Ester]]
 		
-		</tw-passagedata><tw-passagedata pid="41" name="What Happened to Ester?" tags="" position="3527,1914" size="100,100"></tw-passagedata><tw-passagedata pid="42" name="What happened to Ester" tags="" position="4009,1478" size="100,100">She talked to her boyfriend. He was understanding and he never did anything else to her without explicity asking for her permission. They ended up staying together for quite some time longer. However, when it came to college they called it quits and are now living life at their respective colleges getting great grades and partying hard. Work hard play hard. What can they say?</tw-passagedata><tw-passagedata pid="43" name="what happened to Catherine?" tags="" position="2932,1911" size="100,100">Catherine ended up spending a lovely girls night at your house and you two ended up being best friends! She aced her writing paper that she had due and she went to her top choice college and worked on herself. Then she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on highschool boys</tw-passagedata><tw-passagedata pid="44" name="What Happened to Catherine?" tags="" position="3477,2266" size="100,100">Catherine chased the boy in her math class. He ended up not liking her so she found a new crush. The cycle continued on. She ended up doing relatively poorly on her exams and papers and almost didn&#39;t pass the year. She is doing alright now and has worked her grades back up and has found a man who supports her passions and pursuits. </tw-passagedata><tw-passagedata pid="45" name="No?" tags="" position="2359,510" size="100,100">{ 
+		</tw-passagedata><tw-passagedata pid="39" name="What Happened to Ester?" tags="" position="2819,3150" size="100,100"></tw-passagedata><tw-passagedata pid="40" name="What happened to Ester" tags="" position="4009,1478" size="100,100">She talked to her boyfriend. He was understanding and he never did anything else to her without explicity asking for her permission. They ended up staying together for quite some time longer. However, when it came to college they called it quits and are now living life at their respective colleges getting great grades and partying hard. Work hard play hard. What can they say?</tw-passagedata><tw-passagedata pid="41" name="what happened to Catherine?" tags="" position="2485,2750" size="100,100">Catherine ended up spending a lovely girls night at your house and you two ended up being best friends! She aced her writing paper that she had due and she went to her top choice college and worked on herself. Then she met the perfect boy of her dreams and she was happy she didn&#39;t waste time on highschool boys</tw-passagedata><tw-passagedata pid="42" name="What Happened to Catherine?" tags="" position="3045,3162" size="100,100">Catherine chased the boy in her math class. He ended up not liking her so she found a new crush. The cycle continued on. She ended up doing relatively poorly on her exams and papers and almost didn&#39;t pass the year. She is doing alright now and has worked her grades back up and has found a man who supports her passions and pursuits. </tw-passagedata><tw-passagedata pid="43" name="No?" tags="" position="1375,510" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well, it&#39;s basically a facebook group where you can post your friends or yourself. And you essentially attach a bunch of pictures and you can say characteristics about yourself like your height, age, what you do, etc. It&#39;s almost like a fancier tinder.&quot;) )
@@ -561,18 +540,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[Wait why not?]]
 =|
 [[I&#39;ll make you one!!! It&#39;d be so fun. Maybe you could even make one for me and we could go on a double date :)]]
-|==|</tw-passagedata><tw-passagedata pid="46" name="Ya? I&#39;ve heard of it. What about it?" tags="" position="2669,862" size="100,100">{ 
-	&lt;!-- Save our response from passage name --&gt;
-	(set: $responses to it + (a: (passage:)&#39;s name) )
-	(set: $responses to it + (a: &quot;I met the CUTEST boy&quot;) )
-	(display: &quot;Messenger&quot;)
-} 
-
-|=
-[[Tell me ALL about him! I&#39;m so excited]]
-=|
-[[Really?... another one...]]
-|==|</tw-passagedata><tw-passagedata pid="47" name="Wait why not?" tags="" position="2183,639" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="44" name="Wait why not?" tags="" position="1199,639" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Have you seen the guys on the app??&quot;) )
@@ -585,7 +553,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 (link-goto: &quot;Oh come on! Wdym you&#39;re not. Of course you are!&quot;)(set: $responses to it + (a: &quot;Oh come on! Wdym you&#39;re not. Of course you are!&quot;))
 =|
 [[ya. you&#39;re right you&#39;re not]]
-|==|</tw-passagedata><tw-passagedata pid="48" name="I&#39;ll make you one!!! It&#39;d be so fun. Maybe you could even make one for me and we could go on a double date :)" tags="" position="2339,876" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="45" name="I&#39;ll make you one!!! It&#39;d be so fun. Maybe you could even make one for me and we could go on a double date :)" tags="" position="1355,876" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;NO! Stop what you&#39;re doing right now! I&#39;ll make one for you but you are NOT making one for.&quot;) )
@@ -602,7 +570,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =| 
 
 [[No? what about them?]]
-|==|</tw-passagedata><tw-passagedata pid="49" name="Ya? I&#39;ve heard of it. Wait! Have you made a post?" tags="" position="2494,759" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="46" name="Ya? I&#39;ve heard of it. Wait! Have you made a post?" tags="" position="1516,762" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;No omg. I could never.&quot;) )
@@ -613,7 +581,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[Wait why not?]]
 =|
 [[I&#39;ll make you one!!! It&#39;d be so fun. Maybe you could even make one for me and we could go on a double date :)]]
-|==|</tw-passagedata><tw-passagedata pid="50" name="Oh come on! Wdym you&#39;re not. Of course you are!" tags="" position="1984,740" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="47" name="Oh come on! Wdym you&#39;re not. Of course you are!" tags="" position="1000,740" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: &quot;I am nothing like them. Those guys are super muscular. I literally can&#39;t even do a singular pushup. They&#39;re all super tall. What am I? like barely 5 foot 8.&quot;) )
 	(display: &quot;Messenger&quot;)
@@ -624,7 +592,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 =|
 [[ya. you&#39;re right you&#39;re not]]
-|==|</tw-passagedata><tw-passagedata pid="51" name="ya. you&#39;re right you&#39;re not" tags="" position="1982,555" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="48" name="ya. you&#39;re right you&#39;re not" tags="" position="1052,540" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Guess I&#39;ll just be single forever...&quot;) )
@@ -635,7 +603,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[We can be single together :/ we can make one of those pacts where we marry if we&#39;re both single by age 40]]
 =|
 [[come on don&#39;t say that.]]
-|==|</tw-passagedata><tw-passagedata pid="52" name="No? what about them?" tags="" position="2200,889" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="49" name="No? what about them?" tags="" position="1216,889" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;They&#39;re all at least 6 feet tall. Super muscular dudes. I mean they all have six pack. Not even six pack like eight pack. THEY&#39;RE HOT to say the least.&quot;) )
@@ -648,7 +616,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 (link-goto: &quot;People have different types!! Stay confident!&quot;)(set: $responses to it + (a: &quot;People have different types!! Stay confident!&quot;))
 =|
 [[... mmm :/ I don&#39;t know what to say]]
-|==|</tw-passagedata><tw-passagedata pid="53" name="... mmm :/ I don&#39;t know what to say" tags="" position="1696,454" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="50" name="... mmm :/ I don&#39;t know what to say" tags="" position="712,454" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;maybe we&#39;re just forever alone&quot;) )
@@ -659,7 +627,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[come on don&#39;t say that.]]
 =|
 [[We can be single together :/ we can make one of those pacts where we marry if we&#39;re both single by age 40]]
-|==|</tw-passagedata><tw-passagedata pid="54" name="People have different types!! Stay confident!" tags="" position="2023,929" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="51" name="People have different types!! Stay confident!" tags="" position="1039,929" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: &quot;Mmmm... I guess you&#39;re right?&quot;) )
 	(set: $responses to it + (a: &quot;Exactly! There are plenty of girls out there who are looking for a guy just like you. Dont be discouraged. &quot;) )
@@ -672,7 +640,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 =|
 [[Why don&#39;t we go out next weekend. Maybe you can meet someone?]]
-|==|</tw-passagedata><tw-passagedata pid="55" name="We can be single together :/ we can make one of those pacts where we marry if we&#39;re both single by age 40" tags="" position="2014,271" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="52" name="We can be single together :/ we can make one of those pacts where we marry if we&#39;re both single by age 40" tags="" position="1030,271" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;ya :) at least we&#39;ll have eachother&quot;) )
@@ -682,7 +650,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 } 
 
 [[Return to Notifications --&gt;Phone]]
-</tw-passagedata><tw-passagedata pid="56" name="come on don&#39;t say that." tags="" position="1804,347" size="200,100">{ 
+</tw-passagedata><tw-passagedata pid="53" name="come on don&#39;t say that." tags="" position="820,347" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well. That&#39;s how i feel. I gotta get back to homework. I&#39;ll ttyl.&quot;) )
@@ -691,7 +659,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ethan to 2)
 } 
 
-[[Return to Notifications --&gt;Phone]]</tw-passagedata><tw-passagedata pid="57" name="Well.. if you&#39;d let me make a post for you maybe you can :)." tags="" position="1804,926" size="100,100">{ 
+[[Return to Notifications --&gt;Phone]]</tw-passagedata><tw-passagedata pid="54" name="Well.. if you&#39;d let me make a post for you maybe you can :)." tags="" position="820,926" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;MMmm... idk&quot;) )
@@ -704,7 +672,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[let&#39;s do it! next week sound good?]]
 =|
 [[... mmm. Actually, idk if it&#39;s a good idea]]
-|==|</tw-passagedata><tw-passagedata pid="58" name="Why don&#39;t we go out next weekend. Maybe you can meet someone?" tags="" position="1498,909" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="55" name="Why don&#39;t we go out next weekend. Maybe you can meet someone?" tags="" position="514,909" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;OooOOo the old fashion way. I like&quot;) )
@@ -714,7 +682,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ethan to 4)
 } 
 
-[[Return to Notifications -&gt;Phone]]</tw-passagedata><tw-passagedata pid="59" name="let&#39;s do it! next week sound good?" tags="" position="1630,1046" size="200,100">{ 
+[[Return to Notifications -&gt;Phone]]</tw-passagedata><tw-passagedata pid="56" name="let&#39;s do it! next week sound good?" tags="" position="646,1046" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Yes! Im excited&quot;) )
@@ -724,7 +692,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ethan to 5)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="60" name="... mmm. Actually, idk if it&#39;s a good idea" tags="" position="1665,789" size="100,100">{ 
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="57" name="... mmm. Actually, idk if it&#39;s a good idea" tags="" position="681,789" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;wait what why not&quot;) )
@@ -737,7 +705,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 [[Why don&#39;t we go out next weekend. Maybe you can meet someone?]]
 =|
 [[idk...]]
-|==|</tw-passagedata><tw-passagedata pid="61" name="idk..." tags="" position="1509,674" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="58" name="idk..." tags="" position="525,674" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;what??&quot;) )
@@ -750,7 +718,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Ethan to 3)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="62" name="Return to Notifications" tags="" position="3837,1348" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="63" name="Jess" tags="" position="3036,560" size="100,100">{
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="59" name="Return to Notifications" tags="" position="4077,1868" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="60" name="Jess" tags="" position="3036,560" size="100,100">{
 	&lt;! -- Save our response --&gt; 
 	(set: $responses to (a: &quot;Ugh! Can I just rant to you for a second.&quot;) )
 	&lt;! -- Save their response --&gt; 
@@ -764,7 +732,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 |= 
 [[Yes of course]]
-|==|</tw-passagedata><tw-passagedata pid="64" name="Um. No? I&#39;m too busy for that" tags="" position="2935,404" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="61" name="Um. No? I&#39;m too busy for that" tags="" position="2935,404" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;You&#39;re kidding right?&quot;) )
@@ -779,7 +747,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[No.]]
 
-|==|</tw-passagedata><tw-passagedata pid="65" name="Yes of course" tags="" position="3191,489" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="62" name="Yes of course" tags="" position="3191,489" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well you know how Emily and I are dating right?&quot;) )
@@ -796,7 +764,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Ya. I feel kind of bad for you guys. Everyone must be so annoying]]
 
-|==|</tw-passagedata><tw-passagedata pid="66" name="Yes! of course i&#39;m kidding. I always have time for you &lt;3" tags="" position="3043,226" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="63" name="Yes! of course i&#39;m kidding. I always have time for you &lt;3" tags="" position="3043,226" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Well you know how Emily and I are dating right?&quot;) )
@@ -813,7 +781,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Ya. I feel kind of bad for you guys. Everyone must be so annoying]]
 
-|==|</tw-passagedata><tw-passagedata pid="67" name="No." tags="" position="2739,312" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="64" name="No." tags="" position="2739,312" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Oh bruh okay then.&quot;) )
@@ -821,7 +789,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Jess to 1)
 }
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="68" name="oh come on. You&#39;re relationship is making you popular what could be so bad" tags="" position="3391,451" size="100,100">{ 
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="65" name="oh come on. You&#39;re relationship is making you popular what could be so bad" tags="" position="3391,451" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;So?? I constantly get bombarded by so many ignorant people asking questions or sexualizing our relationship&quot;) )
@@ -836,7 +804,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[And... What&#39;s so wrong about the good ole question &#39;who wears the pants&#39;]]
 
-|==|</tw-passagedata><tw-passagedata pid="69" name="Ya. I feel kind of bad for you guys. Everyone must be so annoying" tags="" position="3345,204" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="66" name="Ya. I feel kind of bad for you guys. Everyone must be so annoying" tags="" position="3345,204" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Ya I know! They keep butting into our relationship. They also always ask us &#39;Who wears the pants in the relationship?&#39;&quot;) )
@@ -851,7 +819,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[That&#39;s so insensitive!]]
 
-|==|</tw-passagedata><tw-passagedata pid="70" name="wait that&#39;s a good question. I should&#39;ve asked you guys that before." tags="" position="2573,0" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="67" name="wait that&#39;s a good question. I should&#39;ve asked you guys that before." tags="" position="2573,0" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Are you serious...&quot;) )
@@ -868,7 +836,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[You&#39;re right sorry continue]]
 
-|==|</tw-passagedata><tw-passagedata pid="71" name="That&#39;s so insensitive!" tags="" position="3591,69" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="68" name="That&#39;s so insensitive!" tags="" position="3591,69" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;I know! We both wear pants. We both contribute equally into the relationship&quot;) )
@@ -885,7 +853,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[What else do they say?]]
 
-|==|</tw-passagedata><tw-passagedata pid="72" name="I don&#39;t get why people feel the need to put heterosexual stereotypes on everything, even homosexual relationships." tags="" position="3734,71" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="69" name="I don&#39;t get why people feel the need to put heterosexual stereotypes on everything, even homosexual relationships." tags="" position="3734,71" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Oh get this! This one is bad. A group of the guys yesterday came up to us asking if we&#39;d have a threesome with them?&quot;) )
@@ -900,7 +868,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Wait that sounds so fun. No one ever asks me that.]]
 
-|==|</tw-passagedata><tw-passagedata pid="73" name="What else do they say?" tags="" position="3739,331" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="70" name="What else do they say?" tags="" position="3739,331" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Oh get this! This one is bad. A group of the guys yesterday came up to us asking if we&#39;d have a threesome with them?&quot;) )
@@ -915,7 +883,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Wait that sounds so fun. No one ever asks me that.]]
 
-|==|</tw-passagedata><tw-passagedata pid="74" name="Oh god. What do they say?" tags="" position="3638,562" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="71" name="Oh god. What do they say?" tags="" position="6894,3689" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Oh get this! This one is bad. A group of the guys yesterday came up to us asking if we&#39;d have a threesome with them?&quot;) )
@@ -930,7 +898,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Wait that sounds so fun. No one ever asks me that.]]
 
-|==|</tw-passagedata><tw-passagedata pid="75" name="And... What&#39;s so wrong about the good ole question &#39;who wears the pants&#39;" tags="" position="3071,18" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="72" name="And... What&#39;s so wrong about the good ole question &#39;who wears the pants&#39;" tags="" position="3071,18" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Are you serious...&quot;) )
@@ -948,7 +916,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 
 [[You&#39;re right sorry continue]]
 
-|==|</tw-passagedata><tw-passagedata pid="76" name="Pssshhh have you seen TV shows" tags="" position="3355,24" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="73" name="Pssshhh have you seen TV shows" tags="" position="3355,24" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Ya alright TV shows. Thanks for backing me up&quot;) )
@@ -961,7 +929,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 } 
 [[Return to Notifications-&gt;Phone]]
 
-</tw-passagedata><tw-passagedata pid="77" name="You&#39;re right sorry continue" tags="" position="3567,361" size="100,100">{ 
+</tw-passagedata><tw-passagedata pid="74" name="You&#39;re right sorry continue" tags="" position="3567,361" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Oh get this! This one is bad. A group of the guys yesterday came up to us asking if we&#39;d have a threesome with them?&quot;) )
@@ -976,7 +944,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[Wait that sounds so fun. No one ever asks me that.]]
 
-|==|</tw-passagedata><tw-passagedata pid="78" name="That is disgusting!" tags="" position="3875,129" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="75" name="That is disgusting!" tags="" position="3875,129" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;And now Emily doesn&#39;t want to go public anymore.&quot;) )
@@ -994,7 +962,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[No! That is not right! You guys should be able to express your love in school.]]
 
-|==|</tw-passagedata><tw-passagedata pid="79" name="Wait that sounds so fun. No one ever asks me that." tags="" position="2828,432" size="100,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="76" name="Wait that sounds so fun. No one ever asks me that." tags="" position="2828,432" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;You have got to be kidding me. That is disgusting. They are sexualizing our relationship. They have no right to do that. Have you ever heard of guys going up to a hetereosexual couple and asking &#39;hey we should all get together&#39;?&quot;) )
@@ -1012,7 +980,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 =|
 [[That is disgusting!]]
 
-|==|</tw-passagedata><tw-passagedata pid="80" name="I still don&#39;t see the problem" tags="" position="3892,621" size="200,100">{ 
+|==|</tw-passagedata><tw-passagedata pid="77" name="I still don&#39;t see the problem" tags="" position="3892,621" size="200,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Why are you like this. I&#39;ll see you at school&quot;) )
@@ -1021,7 +989,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Jess to 2)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="81" name="I think that&#39;s probably for the best" tags="" position="4024,333" size="100,100">{ 
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="78" name="I think that&#39;s probably for the best" tags="" position="4024,333" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;Yaa.. I&#39;ll talk to her in a bit. If we don&#39;t look together tomorrow dont be alarmed.&quot;) )
@@ -1031,7 +999,7 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Jess to 3)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="82" name="No! That is not right! You guys should be able to express your love in school." tags="" position="4178,188" size="100,100">{ 
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="79" name="No! That is not right! You guys should be able to express your love in school." tags="" position="4178,188" size="100,100">{ 
 	&lt;!-- Save our response from passage name --&gt;
 	(set: $responses to it + (a: (passage:)&#39;s name) )
 	(set: $responses to it + (a: &quot;But we don&#39;t know what to do anymore :(&quot;) )
@@ -1042,33 +1010,181 @@ Oh, that&#39;s a lot of notifications I guess I should check my Phone
 	(set: $Jess to 4)
 } 
 
-[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="83" name="Ester" tags="" position="3841,2125" size="100,100">{
+[[Return to Notifications-&gt;Phone]]</tw-passagedata><tw-passagedata pid="80" name="Ester" tags="" position="3842,2125" size="100,100">{
 	(if: $Ester is false)[Ester always looks back on the night you talked to her. She was always hopeful that you could have convinced her and told her what her boyfriend did was wrong. She became doubtful of her thoughts and stayed in her relationship. It became increasingly toxic and he pushed himself on to her many times. She let him again again because that&#39;s what she thought she was supposed to do. By the time she realized it was wrong, it was too late. She felt she was too far in. Too much time was spent in the relationship with him. She could never leave him now.]
-
 	(if: $Ester is true)[She talked to her boyfriend. He was understanding and he 	never did anything else to her without explicity asking for her 		permission. They ended up staying together for quite some time 		longer. However, when it came to college they called it quits and are now living life at their respective colleges getting great grades and partying hard. Work hard play hard. What can they say?]
 }
 
-[[Ethan!]]</tw-passagedata><tw-passagedata pid="84" name="Ethan!" tags="" position="3841,2275" size="100,100">{
+[[Ethan!]]</tw-passagedata><tw-passagedata pid="81" name="Ethan!" tags="" position="3841,2275" size="100,100">{
 (if: $Ethan is 1)[Ethan did not end up finding anyone to marry or love after you talked to him. Sadly, that night he needed a serious confidence booster that you were not able to give to him. As years passed, he became more and more insecure, and he felt less and less confident in himself as he continuously saw images of other men that he felt lived the dream he could never achieve.]
-
 (if: $Ethan is 2)[Ethan did not end up finding anyone to marry or love after you talked to him. Sadly, that night he needed a serious confidence booster that you were not able to give to him. As years passed, he became more and more insecure, and he felt less and less confident in himself as he continuously saw images of other men that he felt lived the dream he could never achieve.]
-
 (if: $Ethan is 3)[After you talked to him, although Ethan did not feel confident in himself and his appearance, he began to notice how media stereotypes and dreams are not always a reality. He turned his focus to real life couples and just everyday men who he thought found love with beautiful ladies. As he noticed this, he began to gain confidence and was eventually able to stop doubting himself and chased the girl of his dreams. They are now happily engaged, and he still talks to you to this day.]
-
 (if: $Ethan is 4)[You and Ethan went out to party the next weekend and had a great time. Although you were unable to get him a beautiful girl to talk to even though you definitely tried, Ethan went home that night overjoyed and forgot about all his worries about subtle asian dating. Although he saw some of their posts as he scrolled through facebook, it stopped fazing him that he didn&#39;t look much like the guys on the page. He worries more about what he had to show on this inside and worked on himself. He is now highly successful and owns his own small business.]
-
 (if: $Ethan is 5)[You and Ethan went out the next weekend and made a beautiful post with all the best angles. You cherry picked all his best qualities and made him look the best he could ever look. You guys were both very proud of what you got done and submitted it the facebook group. However, after it was posted, it did not get much attention. Only a few 20 people liked it compared to the 1000s the men that Ethan had described got. Ethan became very discouraged and this took a large piece of his self esteem that he was never able to gain back. His post proved to him that he was right at first. He could never beat out these 6 foot tall and 8 pack ab guys.]
 }
 
 [[Jess!]]
-</tw-passagedata><tw-passagedata pid="85" name="Jess!" tags="" position="3841,2425" size="100,100">{(if: $Jess is 1)[Jess never talked to you again.]
-
+</tw-passagedata><tw-passagedata pid="82" name="Jess!" tags="" position="3841,2425" size="100,100">{(if: $Jess is 1)[Jess never talked to you again.]
 (if: $Jess is 2)[Jess never talked to you again. She saw you at school, but was so upset that her best friend viewed her relationship like her bullies at school that she never wanted to talk to you again. You don&#39;t know what happened to her. Jess and Emily seemed happy throughout their relationship in highschool. You watched from a far of course. Who knows what kind of demons formed from all the things people said about them.]
-
 (if: $Jess is 3)[Jess was right. The next day at school they had a fake argument in front of the entire school and broke up. You have to give them credit as it was beautifully acted. However, as weeks went on you saw their relationship start to die. Jess resented Emily for making them go private. Jess wanted to show affection and oftentimes tried to only to be pushed away by Emily. They had to pretend to hate eachother and because they tried to avoid being seeing, they also did not go on dates on anymore. Their love for eachother dwindled and started to die off just a few weeks after their fake breakup]
-
 (if: $Jess is 4)[You went to the principal the next day with Jess and Emily to report all the incidents that happened throughout the day. The principal told you that there was not much they could do to help. They could only try their best to mitigate any bullying, but the principal felt it would be impossible to stop all of it. The principal was right. Although they could mitigate a few of the harsh words and comments, they could not get all of them or all the attention away. Not only this, but after reporting it to the principal, there was even more attention payed towards Emily and Jess. They even started getting hate messages because they reported it to the principal. You felt sorry that you had pushed them in that direction. You watched as the crushing comments and hate pushed the two of them apart until Emily and Jess split, and all the comments stopped.]
-}</tw-passagedata></tw-storydata>
+}</tw-passagedata><tw-passagedata pid="83" name="Untitled Passage 1" tags="" position="100,310" size="100,100">
+</tw-passagedata><tw-passagedata pid="84" name="Check Your Phone" tags="" position="2958,1717.5" size="100,100">(alert:&quot;New Notifications from Catherine, Ethan, and Jess&quot;)
+
+Oh, that&#39;s a lot of notifications! I guess I should check [[them-&gt;Phone]]
+
+(set: $characters to 0)</tw-passagedata><tw-passagedata pid="85" name="You mean Chris Evans? He has been going to our school for years already." tags="" position="1198,1798" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Ha ha ha. That&#39;s a celebrity. You&#39;re soooo funny. Stop! I&#39;m serious!&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Still. Shouldn&#39;t you be paying attention in math class... instead of staring at boys...]]
+
+=|
+[[Send me his @ I wanna see his cuteness! Also, tell me more!!]]
+
+|==|</tw-passagedata><tw-passagedata pid="86" name="A new student?? Tell me more! Did you get to talk to him?" tags="" position="1364,1806" size="100,100">Double-click this passage to edit it.</tw-passagedata><tw-passagedata pid="87" name="Yes, yes of course! I have a big paper due, but finding your dream boyfriend is DEFINITELY more important" tags="" position="1602,2052" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Boys come first! Imagine me. Popular with Chris as my arm candy. I could go to all his football games and cheer him on&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+
+|= 
+[[Let&#39;s call this &quot;MISSION: Chris=Boyfriend&quot; Do you get it? The equal sign is like the math class? yea?]]
+
+=| 
+[[Wait? Do you feel like you need Chris to be happier or more well liked?]]
+
+|==|</tw-passagedata><tw-passagedata pid="88" name="An independent woman. I don&#39;t need no man. Why do you think boys come first?" tags="" position="1300,2201" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Stop I&#39;m serious. I actually think I lke him&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+
+|= 
+[[Catherine. I hate to break it to you. You only saw him briefly. This is not love at first sight. You definitely shouldn&#39;t be letting your grades drop for this boy.]]
+
+=| 
+[[Okay. I&#39;ll be serious. What about you come over tonight and we can stalk him on all platforms and plan out the best way for you to make him your boyfriend!]]
+
+|==|</tw-passagedata><tw-passagedata pid="89" name="Oh my goodness, you&#39;re right! Okay, okay tell me more about the boy." tags="" position="1476,2203" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;I don&#39;t know that much to be honest. I just saw him in math class. Could you help me find his @?&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Okay, okay fine. I will help you with your boy shenanginans.  What about you come over tonight and we can stalk him on all platforms and plan out the best way for you to make him your boyfriend!]]
+=| 
+[[Wait. You only saw the man, and you already want him to be your boyfriend?]]
+|==|</tw-passagedata><tw-passagedata pid="90" name="Let&#39;s call this &quot;MISSION: Chris=Boyfriend&quot; Do you get it? The equal sign is like the math class? yea?" tags="" position="1794,2331" size="100,100">{ 	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;LMAO. You&#39;re so funny! How are we going to complete this mission.&quot;) )
+	(set: $responses to it + (a: &quot;What about you come over tonight and we can stalk him on all platforms and plan out the best way for you to make him your boyfriend!&quot;))
+	(set: $responses to it + (a: &quot;Yes!!! That sounds so fun! I&#39;m gonna make this stranger Chris man my boyfriend! When Should I come over?&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Does eight sound good?]]
+=| 
+[[What about right now!]]
+|==|</tw-passagedata><tw-passagedata pid="91" name="Wait. You only saw the man, and you already want him to be your boyfriend?" tags="" position="2100,2200" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;I know. I&#39;m a little boy crazy. Now help me find his @!&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Don&#39;t you think that&#39;s a little creepy? Shouldn&#39;t you try talking to him first? Or, you could try getting to know him more?]]
+=| 
+[[Yes, yes of course! I have a big paper due, but finding your dream boyfriend is DEFINITELY more important]]
+|==|</tw-passagedata><tw-passagedata pid="92" name="Don&#39;t you think that&#39;s a little creepy? Shouldn&#39;t you try talking to him first? Or, you could try getting to know him more?" tags="" position="1976,2325" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;No! Omg! You do not know anything about dating. He has to notice me too! I can&#39;t ask him out or approach him. That&#39;d be to forth coming&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Okay. You&#39;re right. Why don&#39;t you come over and we can come up with a game plan to make him notice you!]]
+=| 
+[[Yes, yes of course! I have a big paper due, but finding your dream boyfriend is DEFINITELY more important]]
+|==|</tw-passagedata><tw-passagedata pid="93" name="Okay, okay fine. I will help you with your boy shenanginans.  What about you come over tonight and we can stalk him on all platforms and plan out the best way for you to make him your boyfriend!" tags="" position="1583,2350" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Yes!!! That sounds so fun! I&#39;m gonna make this stranger Chris man my boyfriend! When Should I come over?&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+
+|= 
+[[Does eight sound good?]]
+
+=| 
+[[What about right now!]]
+
+|==|</tw-passagedata><tw-passagedata pid="94" name="Catherine. I hate to break it to you. You only saw him briefly. This is not love at first sight. You definitely shouldn&#39;t be letting your grades drop for this boy." tags="" position="1145,2340" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Boys come first! Imagine me. Popular with Chris as my arm candy. I could go to all his football games and cheer him on&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+
+|= 
+[[Let&#39;s call this &quot;MISSION: Chris=Boyfriend&quot; Do you get it? The equal sign is like the math class? yea?]]
+
+=| 
+[[Wait? Do you feel like you need Chris to be happier or more well liked?]]
+
+|==|</tw-passagedata><tw-passagedata pid="95" name="Okay. I&#39;ll be serious. What about you come over tonight and we can stalk him on all platforms and plan out the best way for you to make him your boyfriend!" tags="" position="1375,2351" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Yes!!! That sounds so fun! I&#39;m gonna make this stranger Chris man my boyfriend! When Should I come over?&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+
+|= 
+[[Does eight sound good?]]
+
+=| 
+[[What about right now!]]
+
+|==|</tw-passagedata><tw-passagedata pid="96" name="Wait? Do you feel like you need Chris to be happier or more well liked?" tags="" position="1446,2762" size="200,100">{
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;I mean. ya? All the popular girls have boyfriends.&quot;) )
+	(set: $responses to it + (a: &quot;So? You should not need to get a guy to be happier. You know a boy will never make you love yourself more. You have to do that on your own.&quot;) )
+	(set: $responses to it + (a: &quot;Ya... but I feel like all girls in relationships are so happy.&quot;) )
+	(set: $responses to it + (a: &quot;That could be true. Yes. Sometimes those girls are not actually happy in their relationships though. They are suffering, but appear happy to look like their relationship is all sugar and lollipops.&quot;) )
+	(set: $responses to it + (a:&quot;Idk what to do then. :/. Can you help me?&quot;))
+	(set: $responses to it + (a: &quot;Yes of course. Why don&#39;t you come over and we can have a girls&#39; night. No boys. Just us, and we can play our favorite movies, do face masks, and of course get our work done.&quot;))
+	(set: $responses to it + (a: &quot;That sounds like so much fun! I&#39;ll grab my bag and head right over&quot;))
+	(set: $responses to it + (a: &quot;I can&#39;t wait! See you in a few!&quot;))
+	(display: &quot;Messenger&quot;)
+	(set: $Catherine to 0)
+} 
+
+{(live:0.5s[[[Return to Notifications -&gt;Phone]]])}
+</tw-passagedata><tw-passagedata pid="97" name="Still. Shouldn&#39;t you be paying attention in math class... instead of staring at boys..." tags="" position="1198,1948" size="100,100">{ 	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Get your priorities straight! Boys come before grades. That&#39;s the most obvious rule.&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Why do you think boys come first?]]
+=| 
+[[Oh you&#39;re right! Okay okay tell me more about the boy]]
+|==|</tw-passagedata><tw-passagedata pid="98" name="Okay. You&#39;re right. Why don&#39;t you come over and we can come up with a game plan to make him notice you!" tags="" position="2153,2484" size="100,100">{ 
+	&lt;!-- Save our response from passage name --&gt;
+	(set: $responses to it + (a: (passage:)&#39;s name) )
+	(set: $responses to it + (a: &quot;Yes!!! That sounds so fun! I&#39;m gonna make this stranger Chris man my boyfriend! When Should I come over?&quot;) )
+	(display: &quot;Messenger&quot;)
+} 
+|= 
+[[Does eight sound good?]]
+=| 
+[[What about right now!]]
+|==|</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
